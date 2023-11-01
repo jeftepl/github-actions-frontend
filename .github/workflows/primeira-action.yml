@@ -6,7 +6,7 @@ on:
   push:
     branches: [ "main" ]
   pull_request:
-    branches: [ "main" ]
+    types: [opened, synchronize]
 
 # Um fluxo de trabalho é feito de um ou mais trabalhos(jobs) que podem rodar sequencialmente ou em paralelo
 jobs:
