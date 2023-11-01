@@ -26,3 +26,7 @@ jobs:
       # Roda um comando usando o shell
       - name: Run a one-line script
         run: echo Hello, world!
+
+      # Roda um comando usando o shell
+      - name: Run a list files
+        run: ls -la
