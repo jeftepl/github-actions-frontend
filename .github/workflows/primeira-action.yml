@@ -15,7 +15,7 @@ jobs:
   exemplo:
 
     # Precisamos definir uma máquina para rodar nossos scripts
-    runs-on: ubunto-latest
+    runs-on: ubuntu-latest
 
     # Passos representam uma sequescia de tarefas que serão executadas como parte do trabalho(job)
     steps:
