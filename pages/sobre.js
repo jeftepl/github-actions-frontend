@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function AboutScreen() {
   return (
     <div>
@@ -16,6 +18,7 @@ export default function AboutScreen() {
         pulvinar nulla. Nulla bibendum purus sodales sapien vulputate dignissim.
         Duis dignissim magna velit.
       </p>
+      <Link href="/">Voltar para Home</Link>
     </div>
   );
 }
