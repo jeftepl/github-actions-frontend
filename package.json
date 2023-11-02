@@ -14,7 +14,8 @@
     "build": "rm -rf build && next build && mv out build",
     "start": "next start",
     "lint": "next lint",
-    "lint:fix": "next lint --fix"
+    "lint:fix": "next lint --fix",
+    "deploy:prod": "yarn build && npx vercel ./build --yes --token$VERCEL_TOKEN --prod"
   },
   "devDependencies": {
     "eslint": "8.52.0",
