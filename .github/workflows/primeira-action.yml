@@ -4,22 +4,19 @@ name: "CI (Integração Continua): Primeira Action"
 on:
   # Ativa esse fluxo de trabalho para cada push ou pull que acontecer para a branch main
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
     types: [opened, synchronize]
 
 # Um fluxo de trabalho é feito de um ou mais trabalhos(jobs) que podem rodar sequencialmente ou em paralelo
 jobs:
-
   # Este fluxo de trabalho contém um trabalho(job) chamado exemplo
   exemplo:
-
     # Precisamos definir uma máquina para rodar nossos scripts
     runs-on: ubuntu-latest
 
     # Passos representam uma sequescia de tarefas que serão executadas como parte do trabalho(job)
     steps:
-
       # Faz check-out do seu repositório, para que seu trabalho possa acessá-lo
       - uses: actions/checkout@v3
 
