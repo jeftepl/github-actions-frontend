@@ -1,6 +1,5 @@
 {
   "name": "github-actions-frontend",
-  "type": "module",
   "version": "1.0.0",
   "main": "index.js",
   "author": "Jefté Lima <jefte_lima@hotmail.com>",
