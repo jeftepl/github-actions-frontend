@@ -15,7 +15,6 @@
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
-    "deploy": "yarn build && npx vercel ./build --yes --prod",
     "deploy:prod": "yarn build && npx vercel ./build --yes --token=$VERCEL_TOKEN --prod",
     "deploy:preview": "node ./scripts/pullRequestPreview"
   },
