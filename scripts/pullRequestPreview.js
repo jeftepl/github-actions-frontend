@@ -5,6 +5,7 @@ console.log("[DEPLOY_PREVIEW]: START");
 const command = "yarn deploy:staging";
 const output = execSync(command, { encoding: "utf-8" });
 const outputLines = output.split("/n");
+console.log("outputLines: ", outputLines);
 const packageJson = JSON.parse(readFileSync("package.json", "utf8"));
 const projectName = packageJson.name;
 const DEPLOY_URL = outputLines.find(
