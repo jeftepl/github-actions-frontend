@@ -7,7 +7,8 @@ const output = execSync(command, { encoding: "utf-8" });
 const outputLines = output.split("/n");
 const packageJson = JSON.parse(readFileSync("package.json", "utf8"));
 const projectName = packageJson.name;
-const DEPLOY_URL = outputLines.find((line) => line.includes(projectName));
+//const DEPLOY_URL = outputLines.find((line) => line.includes(projectName));
+const DEPLOY_URL = "Hello World!";
 console.log("[DEPLOY_PREVIEW]: END");
 
 console.log(`You can see the deploy preview on: ${DEPLOY_URL}`);
