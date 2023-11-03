@@ -7,12 +7,12 @@ const output = execSync(command, { encoding: "utf-8" });
 const outputLines = output.split("/n");
 const packageJson = JSON.parse(readFileSync("package.json", "utf8"));
 const projectName = packageJson.name;
-const DEPLOY_URL_PREVIEW = outputLines.find((line) =>
-  line.includes(projectName),
+const DEPLOY_URL = outputLines.find(
+  (line) => line.includes("https://") && line.includes(projectName),
 );
 console.log("[DEPLOY_PREVIEW]: END");
 
-console.log(`You can see the deploy preview on: ${DEPLOY_URL_PREVIEW}`);
+console.log(`You can see the deploy preview on: ${DEPLOY_URL}`);
 
 /* console.log("[GITHUB_COMMENT]: START");
 console.log("[GITHUB_COMMENT]: END"); */
