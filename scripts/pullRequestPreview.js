@@ -1,5 +1,5 @@
 const { execSync } = require("child_process");
-import { readFileSync } from "fs";
+const { readFileSync } = require("fs");
 
 console.log("[DEPLOY_PREVIEW]: START");
 const command = "yarn deploy:staging";
