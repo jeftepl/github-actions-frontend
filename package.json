@@ -1,5 +1,6 @@
 {
   "name": "github-actions-frontend",
+  "type": "module",
   "version": "1.0.0",
   "main": "index.js",
   "author": "Jefté Lima <jefte_lima@hotmail.com>",
@@ -15,7 +16,8 @@
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
-    "deploy:prod": "yarn build && npx vercel ./build --yes --token=$VERCEL_TOKEN --prod",
+    "deploy:prod": "yarn deploy:staging --prod",
+    "deploy:staging": "yarn build && npx vercel ./build --yes --token=$VERCEL_TOKEN",
     "deploy:preview": "node ./scripts/pullRequestPreview"
   },
   "devDependencies": {
