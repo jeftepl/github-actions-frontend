@@ -1,5 +1,5 @@
 const { execSync } = require("child_process");
-const { Octokit, App } = require("@octokit/core");
+const { Octokit } = require("@octokit/core");
 
 console.log("[DEPLOY_PREVIEW]: START");
 const command = "yarn deploy:staging";
@@ -29,7 +29,7 @@ headers["Accept"] = "application/vnd.github+json";
 headers["Authorization"] = `Bearer ${GITHUB_TOKEN}`;
 headers["X-GitHub-Api-Version"] = "2022-11-28";
 headers["Content-Type"] = "application/json";
-const url = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPOSITORY}/issues/${GITHUB_PR_NUMBER}/comments`;
+const url = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPOSITORY}/pulls/${GITHUB_PR_NUMBER}/comments`;
 const body = JSON.stringify({
   body: GH_COMMENT,
 });
@@ -58,44 +58,17 @@ const octokit = new Octokit({
   auth: GITHUB_TOKEN,
 });
 
-async function postComment() {
-  try {
-    const response = await octokit.request(
-      `POST /repos/${GITHUB_OWNER}/${GITHUB_REPOSITORY}/issues/${GITHUB_PR_NUMBER}/comments`,
-      {
-        owner: GITHUB_OWNER,
-        repo: GITHUB_REPOSITORY,
-        issue_number: GITHUB_PR_NUMBER,
-        body: GH_COMMENT,
-        headers: {
-          "X-GitHub-Api-Version": "2022-11-28",
-        },
-      },
-    );
-    console.log(response);
-  } catch (error) {
-    console.log("[COMMENT_ON_GITHUB: ERROR]");
-    throw new Error(error);
-  } finally {
-    console.log("[COMMENT_ON_GITHUB: END]");
-  }
-}
+const response = await octokit.request(
+  `POST /repos/${GITHUB_OWNER}/${GITHUB_REPOSITORY}/issues/${GITHUB_PR_NUMBER}/comments`,
+  {
+    owner: GITHUB_OWNER,
+    repo: GITHUB_REPOSITORY,
+    issue_number: GITHUB_PR_NUMBER,
+    body: GH_COMMENT,
+    headers: {
+      "X-GitHub-Api-Version": "2022-11-28",
+    },
+  },
+);
 
-postComment();
-
-/* console.log("GITHUB: START");
-let octokit = new Octokit();
-async function respositories() {
-  try {
-    const response = await octokit.request(`GET /users/${GITHUB_OWNER}/repos`);
-    console.log(response);
-  } catch (error) {
-    console.log("GITHUB: ERROR");
-    throw new Error(error);
-  } finally {
-    console.log("GITHUB: END");
-  }
-}
-
-respositories();
- */
+console.log("response", response);
