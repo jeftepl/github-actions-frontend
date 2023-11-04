@@ -58,15 +58,27 @@ const octokit = new Octokit({
   auth: GITHUB_TOKEN,
 });
 
-await octokit.request(
-  `POST /repos/${GITHUB_OWNER}/${GITHUB_REPOSITORY}/issues/${GITHUB_PR_NUMBER}/comments`,
-  {
-    owner: GITHUB_OWNER,
-    repo: GITHUB_REPOSITORY,
-    issue_number: "ISSUE_NUMBER",
-    body: GH_COMMENT,
-    headers: {
-      "X-GitHub-Api-Version": "2022-11-28",
-    },
-  },
-);
+async function postComment() {
+  try {
+    await octokit.request(
+      `POST /repos/${GITHUB_OWNER}/${GITHUB_REPOSITORY}/issues/${GITHUB_PR_NUMBER}/comments`,
+      {
+        owner: GITHUB_OWNER,
+        repo: GITHUB_REPOSITORY,
+        issue_number: "ISSUE_NUMBER",
+        body: GH_COMMENT,
+        headers: {
+          "X-GitHub-Api-Version": "2022-11-28",
+        },
+      },
+    );
+    console.log(response);
+  } catch (error) {
+    console.log("[COMMENT_ON_GITHUB: ERROR]");
+    throw new Error(err);
+  } finally {
+    console.log("[COMMENT_ON_GITHUB: END]");
+  }
+}
+
+postComment();
