@@ -54,14 +54,14 @@ fetch(url, {
  */
 
 // Octokit.js
-/* const octokit = new Octokit({
+const octokit = new Octokit({
   auth: GITHUB_TOKEN,
 });
 
 async function postComment() {
   try {
-    await octokit.request(
-      "POST /repos/{owner}/{repo}/issues/{issue_number}/comments",
+    const response = await octokit.request(
+      `POST /repos/${GITHUB_OWNER}/${GITHUB_REPOSITORY}/issues/${GITHUB_PR_NUMBER}/comments`,
       {
         owner: GITHUB_OWNER,
         repo: GITHUB_REPOSITORY,
@@ -72,6 +72,7 @@ async function postComment() {
         },
       },
     );
+    console.log(response);
   } catch (error) {
     console.log("[COMMENT_ON_GITHUB: ERROR]");
     throw new Error(error);
@@ -80,11 +81,11 @@ async function postComment() {
   }
 }
 
-postComment(); */
+postComment();
 
-console.log("GITHUB: START");
+/* console.log("GITHUB: START");
 let octokit = new Octokit();
-async function postComment() {
+async function respositories() {
   try {
     const response = await octokit.request(`GET /users/${GITHUB_OWNER}/repos`);
     console.log(response);
@@ -96,4 +97,5 @@ async function postComment() {
   }
 }
 
-postComment();
+respositories();
+ */
