@@ -19,10 +19,10 @@ const GH_COMMENT = `
 `;
 
 const defaultHeaders = {};
-defaultHeaders["Authorization"] = `Bearer ${GITHUB_TOKEN}`;
 defaultHeaders["Accept"] = "application/vnd.github+json";
-defaultHeaders["Content-Type"] = "application/json";
+defaultHeaders["Authorization"] = `Bearer ${GITHUB_TOKEN}`;
 defaultHeaders["X-GitHub-Api-Version"] = "2022-11-28";
+defaultHeaders["Content-Type"] = "application/json";
 
 console.log("GITHUB_OWNER", GITHUB_OWNER);
 console.log("GITHUB_REPOSITORY", GITHUB_REPOSITORY);
@@ -31,8 +31,8 @@ console.log("GITHUB_PR_NUMBER", GITHUB_PR_NUMBER);
 fetch(
   `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPOSITORY}/issues/${GITHUB_PR_NUMBER}/comments`,
   {
-    headers: defaultHeaders,
     method: "POST",
+    headers: defaultHeaders,
     body: JSON.stringify({
       body: GH_COMMENT,
     }),
