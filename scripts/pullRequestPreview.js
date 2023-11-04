@@ -61,7 +61,7 @@ const octokit = new Octokit({
 async function postComment() {
   try {
     await octokit.request(
-      "POST /repos/{owner}/{repo}/issues/{issue_number}/comments",
+      "POST /repos/{owner}/{repo}/pull/{issue_number}/comments",
       {
         owner: GITHUB_OWNER,
         repo: GITHUB_REPOSITORY,
