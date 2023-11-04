@@ -1,4 +1,5 @@
 const { execSync } = require("child_process");
+import { Octokit } from "@octokit/core";
 
 console.log("[DEPLOY_PREVIEW]: START");
 const command = "yarn deploy:staging";
@@ -18,24 +19,25 @@ const GH_COMMENT = `
 - Deploy URL: [${DEPLOY_URL}](${DEPLOY_URL})
 `;
 
-const defaultHeaders = {};
-defaultHeaders["Accept"] = "application/vnd.github+json";
-defaultHeaders["Authorization"] = `Bearer ${GITHUB_TOKEN}`;
-defaultHeaders["X-GitHub-Api-Version"] = "2022-11-28";
-defaultHeaders["Content-Type"] = "application/json";
+console.log("GITHUB_OWNER", GITHUB_OWNER);
+console.log("GITHUB_REPOSITORY", GITHUB_REPOSITORY);
+console.log("GITHUB_PR_NUMBER", GITHUB_PR_NUMBER);
+
+/*
+const headers = {};
+headers["Accept"] = "application/vnd.github+json";
+headers["Authorization"] = `Bearer ${GITHUB_TOKEN}`;
+headers["X-GitHub-Api-Version"] = "2022-11-28";
+headers["Content-Type"] = "application/json";
 const url = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPOSITORY}/issues/${GITHUB_PR_NUMBER}/comments`;
 const body = JSON.stringify({
   body: GH_COMMENT,
 });
 
-console.log("GITHUB_OWNER", GITHUB_OWNER);
-console.log("GITHUB_REPOSITORY", GITHUB_REPOSITORY);
-console.log("GITHUB_PR_NUMBER", GITHUB_PR_NUMBER);
-
 fetch(url, {
   method: "POST",
-  headers: defaultHeaders,
-  body: body,
+  headers,
+  body,
 })
   .then(async (response) => {
     if (response.ok) return response.json();
@@ -49,3 +51,22 @@ fetch(url, {
   .finally(() => {
     console.log("[COMMENT_ON_GITHUB: END]");
   });
+ */
+
+// Octokit.js
+const octokit = new Octokit({
+  auth: GITHUB_TOKEN,
+});
+
+await octokit.request(
+  `POST /repos/${GITHUB_OWNER}/${GITHUB_REPOSITORY}/issues/${GITHUB_PR_NUMBER}/comments`,
+  {
+    owner: GITHUB_OWNER,
+    repo: GITHUB_REPOSITORY,
+    issue_number: "ISSUE_NUMBER",
+    body: GH_COMMENT,
+    headers: {
+      "X-GitHub-Api-Version": "2022-11-28",
+    },
+  },
+);
