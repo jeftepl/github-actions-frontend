@@ -1,5 +1,5 @@
 const { execSync } = require("child_process");
-const { Octokit } = require("@octokit/core");
+//const { Octokit } = require("@octokit/core");
 
 console.log("[DEPLOY_PREVIEW]: START");
 const command = "yarn deploy:staging";
@@ -10,7 +10,7 @@ console.log("[DEPLOY_PREVIEW]: END");
 
 console.log(`You can see the deploy preview on: ${DEPLOY_URL}`);
 
-// GitHub Comment
+// GitHub Pull Request Comment
 
 console.log("[GITHUB_COMMENT]: START");
 const { GITHUB_OWNER, GITHUB_TOKEN, GITHUB_REPOSITORY, GITHUB_PR_NUMBER } =
