@@ -9,7 +9,7 @@ console.log("[DEPLOY_PREVIEW]: END");
 
 console.log(`You can see the deploy preview on: ${DEPLOY_URL}`);
 
-// GitHub
+// GitHub Comment
 
 console.log("[GITHUB_COMMENT]: START");
 const { GITHUB_OWNER, GITHUB_TOKEN, GITHUB_REPOSITORY, GITHUB_PR_NUMBER } =
