@@ -72,7 +72,6 @@ async function postComment() {
         },
       },
     );
-    console.log(response);
   } catch (error) {
     console.log("[COMMENT_ON_GITHUB: ERROR]");
     throw new Error(error);
@@ -87,7 +86,7 @@ console.log("GITHUB: START");
 let octokit = new Octokit();
 async function postComment() {
   try {
-    await octokit.request(`GET /users/${GITHUB_OWNER}/repos`);
+    const response = await octokit.request(`GET /users/${GITHUB_OWNER}/repos`);
     console.log(response);
   } catch (error) {
     console.log("GITHUB: ERROR");
