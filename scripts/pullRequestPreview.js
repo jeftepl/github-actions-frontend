@@ -18,9 +18,10 @@ const GH_COMMENT = `
 `;
 
 const defaultHeaders = {};
-defaultHeaders["authorization"] = `token ${GITHUB_TOKEN}`;
-defaultHeaders["accept"] = "application/vnd.github+json";
-defaultHeaders["content-type"] = "application/json";
+defaultHeaders["Authorization"] = `token ${GITHUB_TOKEN}`;
+defaultHeaders["Accept"] = "application/vnd.github+json";
+defaultHeaders["Content-Type"] = "application/json";
+defaultHeaders["X-GitHub-Api-Version"] = "2022-11-28";
 
 console.log("GITHUB_REPOSITORY", GITHUB_REPOSITORY);
 console.log("GITHUB_PR_NUMBER", GITHUB_PR_NUMBER);
