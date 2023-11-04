@@ -65,7 +65,7 @@ async function postComment() {
       {
         owner: GITHUB_OWNER,
         repo: GITHUB_REPOSITORY,
-        issue_number: "ISSUE_NUMBER",
+        issue_number: GITHUB_PR_NUMBER,
         body: GH_COMMENT,
         headers: {
           "X-GitHub-Api-Version": "2022-11-28",
