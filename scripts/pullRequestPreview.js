@@ -1,4 +1,4 @@
-const { execSync } = require("child_process");
+import { execSync } from "child_process";
 
 console.log("[DEPLOY_PREVIEW]: START");
 const command = "yarn deploy:staging";
@@ -12,22 +12,23 @@ console.log(`You can see the deploy preview on: ${DEPLOY_URL}`);
 // GitHub
 
 console.log("[GITHUB_COMMENT]: START");
-const { GITHUB_TOKEN, GITHUB_REPOSITORY, GITHUB_PR_NUMBER } = process.env;
+const { GITHUB_OWNER, GITHUB_TOKEN, GITHUB_REPOSITORY, GITHUB_PR_NUMBER } =
+  process.env;
 const GH_COMMENT = `
 - Deploy URL: [${DEPLOY_URL}](${DEPLOY_URL})
 `;
 
 const defaultHeaders = {};
-defaultHeaders["authorization"] = `token ${GITHUB_TOKEN}`;
-defaultHeaders["accept"] =
-  "application/vnd.github.v3+json; application/vnd.github.antiope-preview+json";
-defaultHeaders["content-type"] = "application/json";
+defaultHeaders["Authorization"] = `Bearer ${GITHUB_TOKEN}`;
+defaultHeaders["Accept"] = "application/vnd.github+json";
+defaultHeaders["Content-Type"] = "application/json";
 
+console.log("GITHUB_OWNER", GITHUB_OWNER);
 console.log("GITHUB_REPOSITORY", GITHUB_REPOSITORY);
 console.log("GITHUB_PR_NUMBER", GITHUB_PR_NUMBER);
 
 fetch(
-  `https://api.github.com/repos/${GITHUB_REPOSITORY}/issues/${GITHUB_PR_NUMBER}/comments`,
+  `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPOSITORY}/issues/${GITHUB_PR_NUMBER}/comments`,
   {
     headers: defaultHeaders,
     method: "POST",
