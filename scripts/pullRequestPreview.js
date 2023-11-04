@@ -1,5 +1,5 @@
 const { execSync } = require("child_process");
-import { Octokit } from "@octokit/core";
+const { Octokit } = require("@octokit/core");
 
 console.log("[DEPLOY_PREVIEW]: START");
 const command = "yarn deploy:staging";
