@@ -1,5 +1,5 @@
 const { execSync } = require("child_process");
-const { Octokit } = require("@octokit/core");
+const { Octokit, App } = require("@octokit/core");
 
 console.log("[DEPLOY_PREVIEW]: START");
 const command = "yarn deploy:staging";
@@ -20,7 +20,6 @@ const GH_COMMENT = `
 `;
 
 console.log("GITHUB_OWNER", GITHUB_OWNER);
-console.log("GITHUB_TOKEN", GITHUB_TOKEN);
 console.log("GITHUB_REPOSITORY", GITHUB_REPOSITORY);
 console.log("GITHUB_PR_NUMBER", GITHUB_PR_NUMBER);
 
@@ -55,7 +54,7 @@ fetch(url, {
  */
 
 // Octokit.js
-const octokit = new Octokit({
+/* const octokit = new Octokit({
   auth: GITHUB_TOKEN,
 });
 
@@ -82,4 +81,9 @@ async function postComment() {
   }
 }
 
-postComment();
+postComment(); */
+
+let octokit = new Octokit();
+let repos = await octokit.request(`GET /users/${GITHUB_OWNER}/repos`);
+
+console.log(repos);
