@@ -26,20 +26,17 @@ defaultHeaders["authorization"] = `token ${GITHUB_TOKEN}`;
 defaultHeaders["accept"] =
   "application/vnd.github.v3+json; application/vnd.github.antiope-preview+json";
 defaultHeaders["content-type"] = "application/json";
-
+const url = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/issues/${GITHUB_PR_NUMBER}/comments`;
 console.log("GITHUB_REPOSITORY", GITHUB_REPOSITORY);
 console.log("GITHUB_PR_NUMBER", GITHUB_PR_NUMBER);
 
-fetch(
-  `https://api.github.com/repos/${GITHUB_REPO}/issues/${GITHUB_PR_NUMBER}/comments`,
-  {
-    headers: defaultHeaders,
-    method: "POST",
-    body: JSON.stringify({
-      body: GH_COMMENT,
-    }),
-  },
-)
+fetch(url, {
+  headers: defaultHeaders,
+  method: "POST",
+  body: JSON.stringify({
+    body: GH_COMMENT,
+  }),
+})
   .then((response) => {
     if (response.ok) return response.json();
     throw new Error(response.statusText);
