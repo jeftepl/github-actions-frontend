@@ -25,7 +25,6 @@ console.log("GITHUB_OWNER", GITHUB_OWNER);
 console.log("GITHUB_REPOSITORY", GITHUB_REPO);
 console.log("GITHUB_PR_NUMBER", GITHUB_PR_NUMBER);
 
-/*
 const headers = {};
 headers["Accept"] = "application/vnd.github+json";
 headers["Authorization"] = `Bearer ${GITHUB_TOKEN}`;
@@ -53,17 +52,16 @@ fetch(url, {
   .finally(() => {
     console.log("[COMMENT_ON_GITHUB: END]");
   });
- */
 
 // Octokit.js
-const octokit = new Octokit({
+/* const octokit = new Octokit({
   auth: GITHUB_TOKEN,
 });
 
 (async () => {
   try {
     await octokit.request(
-      "POST /repos/{owner}/{repo}/pulls/{issue_number}/comments",
+      "POST /repos/{owner}/{repo}/issues/{issue_number}/comments",
       {
         owner: GITHUB_OWNER,
         repo: GITHUB_REPO,
@@ -77,4 +75,4 @@ const octokit = new Octokit({
   } catch (error) {
     console.error(error);
   }
-})();
+})(); */
