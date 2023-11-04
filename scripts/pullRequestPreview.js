@@ -1,5 +1,4 @@
 const { execSync } = require("child_process");
-const fetch = require("node-fetch");
 
 console.log("[DEPLOY_PREVIEW]: START");
 const command = "yarn deploy:staging";
