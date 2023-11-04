@@ -84,7 +84,7 @@ async function postComment() {
 postComment(); */
 
 console.log("GITHUB: START");
-
+let octokit = new Octokit();
 async function postComment() {
   try {
     await octokit.request(`GET /users/${GITHUB_OWNER}/repos`);
