@@ -29,7 +29,7 @@ headers["Accept"] = "application/vnd.github+json";
 headers["Authorization"] = `Bearer ${GITHUB_TOKEN}`;
 headers["X-GitHub-Api-Version"] = "2022-11-28";
 headers["Content-Type"] = "application/json";
-const url = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPOSITORY}/pulls/${GITHUB_PR_NUMBER}/comments`;
+const url = `https://api.github.com/repos/${GITHUB_REPOSITORY}/issues/${GITHUB_PR_NUMBER}/comments`;
 const body = JSON.stringify({
   body: GH_COMMENT,
 });
@@ -60,19 +60,15 @@ const octokit = new Octokit({
 
 async function postComment() {
   try {
-    const response = await octokit.request(
-      "POST /repos/{owner}/{repo}/issues/{issue_number}/comments",
-      {
-        owner: GITHUB_OWNER,
-        repo: GITHUB_REPOSITORY,
-        issue_number: GITHUB_PR_NUMBER,
-        body: GH_COMMENT,
-        headers: {
-          "X-GitHub-Api-Version": "2022-11-28",
-        },
+    await octokit.request("POST /repos/{repo}/issues/{issue_number}/comments", {
+      owner: GITHUB_OWNER,
+      repo: GITHUB_REPOSITORY,
+      issue_number: GITHUB_PR_NUMBER,
+      body: GH_COMMENT,
+      headers: {
+        "X-GitHub-Api-Version": "2022-11-28",
       },
-    );
-    console.log("response", response);
+    });
   } catch (error) {
     console.error(error);
   }
