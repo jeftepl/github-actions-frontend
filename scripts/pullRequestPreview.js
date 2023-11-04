@@ -23,21 +23,20 @@ defaultHeaders["Accept"] = "application/vnd.github+json";
 defaultHeaders["Authorization"] = `Bearer ${GITHUB_TOKEN}`;
 defaultHeaders["X-GitHub-Api-Version"] = "2022-11-28";
 defaultHeaders["Content-Type"] = "application/json";
+const url = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPOSITORY}/issues/${GITHUB_PR_NUMBER}/comments`;
+const body = JSON.stringify({
+  body: GH_COMMENT,
+});
 
 console.log("GITHUB_OWNER", GITHUB_OWNER);
 console.log("GITHUB_REPOSITORY", GITHUB_REPOSITORY);
 console.log("GITHUB_PR_NUMBER", GITHUB_PR_NUMBER);
 
-fetch(
-  `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPOSITORY}/issues/${GITHUB_PR_NUMBER}/comments`,
-  {
-    method: "POST",
-    headers: defaultHeaders,
-    body: JSON.stringify({
-      body: GH_COMMENT,
-    }),
-  },
-)
+fetch(url, {
+  method: "POST",
+  headers: defaultHeaders,
+  body: body,
+})
   .then(async (response) => {
     if (response.ok) return response.json();
     const text = await response.text();
