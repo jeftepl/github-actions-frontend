@@ -20,6 +20,7 @@ const GH_COMMENT = `
 `;
 
 console.log("GITHUB_OWNER", GITHUB_OWNER);
+console.log("GITHUB_TOKEN", GITHUB_TOKEN);
 console.log("GITHUB_REPOSITORY", GITHUB_REPOSITORY);
 console.log("GITHUB_PR_NUMBER", GITHUB_PR_NUMBER);
 
@@ -61,7 +62,7 @@ const octokit = new Octokit({
 async function postComment() {
   try {
     await octokit.request(
-      "POST /repos/{owner}/{repo}/pull/{issue_number}/comments",
+      "POST /repos/{owner}/{repo}/issues/{issue_number}/comments",
       {
         owner: GITHUB_OWNER,
         repo: GITHUB_REPOSITORY,
