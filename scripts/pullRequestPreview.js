@@ -30,7 +30,7 @@ headers["Accept"] = "application/vnd.github+json";
 headers["Authorization"] = `Bearer ${GITHUB_TOKEN}`;
 headers["X-GitHub-Api-Version"] = "2022-11-28";
 headers["Content-Type"] = "application/json";
-const url = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/pulls/${GITHUB_PR_NUMBER}/comments`;
+const url = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/issues/${GITHUB_PR_NUMBER}/comments`;
 const body = JSON.stringify({
   body: GH_COMMENT,
 });
