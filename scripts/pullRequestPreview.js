@@ -75,7 +75,7 @@ async function postComment() {
     console.log(response);
   } catch (error) {
     console.log("[COMMENT_ON_GITHUB: ERROR]");
-    throw new Error(err);
+    throw new Error(error);
   } finally {
     console.log("[COMMENT_ON_GITHUB: END]");
   }
