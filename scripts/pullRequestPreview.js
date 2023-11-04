@@ -19,8 +19,7 @@ const GH_COMMENT = `
 
 const defaultHeaders = {};
 defaultHeaders["authorization"] = `token ${GITHUB_TOKEN}`;
-defaultHeaders["accept"] =
-  "application/vnd.github.v3+json; application/vnd.github.antiope-preview+json";
+defaultHeaders["accept"] = "application/vnd.github+json";
 defaultHeaders["content-type"] = "application/json";
 
 console.log("GITHUB_REPOSITORY", GITHUB_REPOSITORY);
