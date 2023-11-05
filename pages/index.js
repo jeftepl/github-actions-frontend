@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function HomeScreen() {
   return (
     <div>
-      <h1>Página Inicial</h1>
+      <h1>Home Page</h1>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sit
         amet sodales eros, ut iaculis lectus. Nullam varius eget quam eget
@@ -18,7 +18,7 @@ export default function HomeScreen() {
         pulvinar nulla. Nulla bibendum purus sodales sapien vulputate dignissim.
         Duis dignissim magna velit.
       </p>
-      <Link href="/sobre">Sobre</Link>
+      <Link href="/about">About</Link>
     </div>
   );
 }
