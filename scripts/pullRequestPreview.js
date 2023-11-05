@@ -1,5 +1,5 @@
 const { execSync } = require("child_process");
-//const { Octokit } = require("@octokit/core");
+const { Octokit } = require("@octokit/core");
 
 console.log("[DEPLOY_PREVIEW]: START");
 const command = "yarn deploy:staging";
@@ -35,7 +35,7 @@ const body = JSON.stringify({
   body: GH_COMMENT,
 });
 
-fetch(url, {
+/* fetch(url, {
   method: "POST",
   headers,
   body,
@@ -51,10 +51,10 @@ fetch(url, {
   })
   .finally(() => {
     console.log("[COMMENT_ON_GITHUB: END]");
-  });
+  }); */
 
 // Octokit.js
-/* const octokit = new Octokit({
+const octokit = new Octokit({
   auth: GITHUB_TOKEN,
 });
 
@@ -73,6 +73,9 @@ fetch(url, {
       },
     );
   } catch (error) {
-    console.error(error);
+    console.log("[COMMENT_ON_GITHUB: ERROR]");
+    throw new Error(error);
+  } finally {
+    console.log("[COMMENT_ON_GITHUB: END]");
   }
-})(); */
+})();
