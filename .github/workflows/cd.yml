@@ -1,4 +1,4 @@
-name: "CD (Continuos Delivery): Main Workflow"
+name: "CD (Continuous Delivery): Main Workflow"
 
 env:
   VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}

@@ -1,4 +1,4 @@
-name: "CI (Integração Continua): Main Workflow"
+name: "CI (Continuous Integration): Main Workflow"
 
 env:
   VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
