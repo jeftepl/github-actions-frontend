@@ -10,7 +10,7 @@ console.log("[DEPLOY_PREVIEW]: END");
 
 console.log(`You can see the deploy preview on: ${DEPLOY_URL}`);
 
-// GitHub Pull Request Comment Test
+// GitHub Pull Request Comment
 
 console.log("[GITHUB_COMMENT]: START");
 const { GITHUB_OWNER, GITHUB_TOKEN, GITHUB_REPOSITORY, GITHUB_PR_NUMBER } =
@@ -73,6 +73,9 @@ fetch(url, {
       },
     );
   } catch (error) {
-    console.error(error);
+    console.log("[COMMENT_ON_GITHUB: ERROR]");
+    throw new Error(error);
+  } finally {
+    console.log("[COMMENT_ON_GITHUB: END]");
   }
 })(); */
