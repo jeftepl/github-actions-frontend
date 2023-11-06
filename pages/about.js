@@ -4,6 +4,7 @@ export default function AboutScreen() {
   return (
     <div>
       <h1>About</h1>
+      <h2>Lorem ipsum</h2>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sit
         amet sodales eros, ut iaculis lectus. Nullam varius eget quam eget
