@@ -1,6 +1,7 @@
 {
   "name": "github-actions-frontend",
   "version": "1.0.0",
+  "type": "module",
   "main": "index.js",
   "author": "Jefté Lima <jefte_lima@hotmail.com>",
   "license": "MIT",
